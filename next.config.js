@@ -1,10 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    reactStrictMode: true,
-    swcMinify: true,
     output: 'export',
-    basePath: '/refactored-carnival',
-    assetPrefix: '/refactored-carnival/'
+    assetPrefix: process.env.NODE_ENV === 'production' ? '/new-telegram-finder/' : '',
+    images: {
+      unoptimized: true,
+    },
   };
   
-  export default nextConfig;
+  module.exports = nextConfig;
