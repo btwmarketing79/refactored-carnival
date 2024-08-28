@@ -16,8 +16,11 @@ export default function Home() {
   const [userdata, setUserdata] = useState<UserData | null>(null);
 
   useEffect(() => {
-    if (typeof window !== 'undefined' && window.WebApp && window.WebApp.initDataUnsafe.user) {
-      setUserdata(window.WebApp.initDataUnsafe.user as UserData);
+    if (typeof window !== 'undefined' && window.Telegram && window.Telegram.WebApp) {
+      const user = window.Telegram.WebApp.initDataUnsafe?.user;
+      if (user) {
+        setUserdata(user as UserData);
+      }
     }
   }, []); // Ensure useEffect has a dependency array
 
